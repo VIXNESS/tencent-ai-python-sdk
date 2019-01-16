@@ -7,7 +7,6 @@ import requests
 import json
 import time
 import os
-import chardet
 
 class AI(object):
     urlPreffix = "https://api.ai.qq.com/fcgi-bin"

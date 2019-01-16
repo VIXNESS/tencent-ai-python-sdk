@@ -13,6 +13,7 @@ import tencentai
 ```python
 aiObj = tencentai.AI('你的AppID', '你的AppKey')
 ```
+
 4. 调用
 
 ```python

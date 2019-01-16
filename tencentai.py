@@ -112,15 +112,15 @@ class AI(object):
         self.setParams('image', base64.b64encode(image).decode('utf-8'))
         return self.invoke('/ocr/ocr_creditcardocr')
     
-    def ocrHandwritingOCR(self, image, isURL):
-        if isURL:
+    def ocrHandwritingOCR(self, image):
+        if isinstance(image, str):
             self.setParams('image_url', image)
         else:
             self.setParams('image', base64.b64encode(image).decode('utf-8'))
         return self.invoke('/ocr/ocr_handwritingocr')
    
-    def ocrPlateOCR(self, image, isURL):
-        if isURL:
+    def ocrPlateOCR(self, image):
+        if isinstance(image, str):
             self.setParams('image_url', image)
         else:
             self.setParams('image', base64.b64encode(image).decode('utf-8'))
@@ -270,28 +270,21 @@ class AI(object):
         self.setParams('image', base64.b64encode(image).decode('utf-8'))
         return self.invoke('/vision/vision_objectr')
     
-#    def imageTerrorism(self, image, isURL): #url mode failure
-#        if isURL:
-#            self.setParams('image_url', image)
-#        else:
-#            self.setParams('image', base64.b64encode(image).decode('utf-8'))
-#        return self.invoke('/image/image_terrorism', 'POST')
-        
-    def imageTerrorism(self, image):
-        self.setParams('image', base64.b64encode(image).decode('utf-8'))
-        return self.invoke('/image/image_terrorism')
+    def imageTerrorism(self, image): #url mode failure
+        if isinstance(image, str):
+            self.setParams('image_url', image)
+        else:
+            self.setParams('image', base64.b64encode(image).decode('utf-8'))
+        return self.invoke('/image/image_terrorism', 'POST')
     
-#    def visionPorn(self, image, isURL): # url mode failure
-#        if isURL:
-#            self.setParams('image_url', image)
-#        else: 
-#            self.setParams('image', base64.b64encode(image).decode('utf-8'))
-#        return self.invoke('/vision/vision_porn', 'POST')
     def visionPorn(self, image): # url mode failure
-        self.setParams('image', base64.b64encode(image).decode('utf-8'))
-        return self.invoke('/vision/vision_porn')
+        if isinstance(image, str):
+            self.setParams('image_url', image)
+        else: 
+            self.setParams('image', base64.b64encode(image).decode('utf-8'))
+        return self.invoke('/vision/vision_porn', 'POST')
         
-#    def aaiEvilAudio(self, speech_id, speech_url, porn_detect, keyword_detect): #paramter invalid
+#    def aaiEvilAudio(self, speech_id, speech_url, porn_detect, keyword_detect): #sign invalid
 #        self.setParams('speech_id', speech_id)
 #        self.setParams('speech_url', speech_url)
 #        self.setParams('porn_detect', porn_detect)
@@ -340,9 +333,7 @@ class AI(object):
         
     def nlpWordSeg(self, text):#GBK encoding error
         self.setParams('text', text)
-        return self.invoke('/nlp/nlp_wordseg', encode = 'gbk')
-         
-    
+        return self.invoke('/nlp/nlp_wordseg', encode = 'gbk')    
     def nlpWordPos(self, text):#GBK encoding error
         self.setParams('text', text)
         return self.invoke('/nlp/nlp_wordpos', encode = 'gbk')
@@ -391,21 +382,21 @@ class AI(object):
         self.setParams('cont_res', cont_res)
         return self.invoke('/aai/aai_wxasrs')
         
-    def aaiWxAsrLong(self, format, callback_url, speech, isURL):
+    def aaiWxAsrLong(self, format, callback_url, speech):
         self.setParams('format' ,format)
         self.setParams('callback_url', callback_url)
-        if isURL:
+        if isinstance(speech, str):
             self.setParams('speech_url', speech_url)
         else:
             self.setParams('speech', base64.b64encode(speech).decode('utf-8'))
         return self.invoke('/aai/aai_wxasrlong')
         
-    def aaiDetectKeyword(self, format, callback_url, key_words, speech, isURL):
+    def aaiDetectKeyword(self, format, callback_url, key_words, speech):
         self.setParams('format' ,format)
         self.setParams('callback_url', callback_url)
         self.setParams('key_words', key_words)
-        if isURL:
-            self.setParams('speech_url', speech_url)
+        if isinstance(speech, str):
+            self.setParams('speech_url', speech)
         else:
             self.setParams('speech', base64.b64encode(speech).decode('utf-8'))
         return self.invoke('/aai/aai_detectkeyword')
@@ -424,7 +415,6 @@ class AI(object):
         self.setParams('text', text)
         self.setParams('model_type', model_type)
         self.setParams('speed', speed)
-        
         return self.invoke('/aai/aai_tta', method = 'GET')
 
 

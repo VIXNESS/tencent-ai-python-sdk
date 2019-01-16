@@ -7,6 +7,7 @@ import requests
 import json
 import time
 import os
+import chardet
 
 class AI(object):
     urlPreffix = "https://api.ai.qq.com/fcgi-bin"
@@ -347,7 +348,7 @@ class AI(object):
     
     def nlpWordCom(self, text):
         self.setParams('text', text)
-        return self.invoke('/nlp/nlp_wordcom', encode = 'gbk')
+        return self.invoke('/nlp/nlp_wordcom')
     
     def nlpTextPolar(self, text):
         self.setParams('text', text)
@@ -415,3 +416,10 @@ class AI(object):
         self.setParams('model_type', model_type)
         self.setParams('speed', speed)
         return self.invoke('/aai/aai_tta', method = 'GET')
+
+
+
+        
+
+
+    

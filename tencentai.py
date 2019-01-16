@@ -222,6 +222,12 @@ class AI(object):
         self.setParams('image', base64.b64encode(image).decode('utf-8'))
         return self.invoke('/ptu/ptu_imgfilter')
         
+    def visionImgFilter(self, filter, image, session_id):
+        self.setParams('filter', filter)
+        self.setParams('image', base64.b64encode(image).decode('utf-8'))
+        self.setParams('session_id', session_id)
+        return self.invoke('/vision/vision_imgfilter')
+        
     def ptuFaceCosmetic(self, cosmetic, image):
         self.setParams('cosmetic', cosmetic)
         self.setParams('image', base64.b64encode(image).decode('utf-8'))

@@ -375,17 +375,17 @@ class AIPlat(object):
         self.setParams('speech_chunk', base64.b64encode(speech_chunk).decode('utf-8'))
         return self.invoke('/aai/aai_asrs', 'POST')
         
-#    def aaiWxAsrs(self, format, rate, bits, seq, len, end, speech_id, speech_chunk, cont_res): #paramter invalid
-#        self.setParams('format', format)
-#        self.setParams('rate', rate)
-#        self.setParams('bits', bits)
-#        self.setParams('seq', seq)
-#        self.setParams('len', len)
-#        self.setParams('end', end)
-#        self.setParams('speech_id', speech_id)
-#        self.setParams('speech_chunk', base64.b64encode(speech_chunk).decode('utf-8'))
-#        self.setParams('cont_res', cont_res)
-#        return self.invoke('/aai/aai_wxasrs', 'POST')
+    def aaiWxAsrs(self, format, rate, bits, seq, len, end, speech_id, speech_chunk, cont_res):
+        self.setParams('format', format)
+        self.setParams('rate', rate)
+        self.setParams('bits', bits)
+        self.setParams('seq', seq)
+        self.setParams('len', len)
+        self.setParams('end', end)
+        self.setParams('speech_id', speech_id)
+        self.setParams('speech_chunk', base64.b64encode(speech_chunk).decode('utf-8'))
+        self.setParams('cont_res', cont_res)
+        return self.invoke('/aai/aai_wxasrs', 'POST')
         
     def aaiWxAsrLong(self, format, callback_url, speech, isURL):
         self.setParams('format' ,format)

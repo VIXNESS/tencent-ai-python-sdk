@@ -12,7 +12,8 @@ import tencentai
 ```python
 aiObj = tencentai.AI('你的AppID', '你的AppKey')
 ```
-3. 调用范例:
+3. 调用
+范例:
 ```python
 with open('image.jpg') as image:
   response = aiObj.ocrIDCardOCR(image.read(), 0)

@@ -8,11 +8,13 @@ import sys
 sys.path.append('文件所在目录') 
 import tencentai
 ```
-2. 初始化
+3. 初始化
+
 ```python
 aiObj = tencentai.AI('你的AppID', '你的AppKey')
 ```
-3. 调用范例:
+4. 调用
+
 ```python
 with open('image.jpg') as image:
   response = aiObj.ocrIDCardOCR(image.read(), 0)

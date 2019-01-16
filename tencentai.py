@@ -416,10 +416,3 @@ class AI(object):
         self.setParams('model_type', model_type)
         self.setParams('speed', speed)
         return self.invoke('/aai/aai_tta', method = 'GET')
-
-
-
-        
-
-
-    

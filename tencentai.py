@@ -8,7 +8,7 @@ import json
 import time
 import os
 
-class AIPlat(object):
+class ai(object):
     urlPreffix = "https://api.ai.qq.com/fcgi-bin"
     
     def __init__(self, app_id, app_key):
